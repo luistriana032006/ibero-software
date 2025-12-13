@@ -14,6 +14,9 @@ function EmployeeList({ employees, onEdit, onDelete }) {
             <th>País</th>
             <th>Cargo</th>
             <th>Años</th>
+            <th>Sueldo</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -26,6 +29,9 @@ function EmployeeList({ employees, onEdit, onDelete }) {
               <td>{employee.pais || '-'}</td>
               <td>{employee.cargo || '-'}</td>
               <td>{employee.anios}</td>
+              <td>{employee.sueldo ? `$${parseFloat(employee.sueldo).toFixed(2)}` : '-'}</td>
+              <td>{employee.correo || '-'}</td>
+              <td>{employee.telefono || '-'}</td>
               <td>
                 <button
                   className="btn btn-edit"

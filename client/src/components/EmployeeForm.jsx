@@ -7,6 +7,9 @@ function EmployeeForm({ employee, onSubmit, onCancel }) {
     pais: '',
     cargo: '',
     anios: '',
+    sueldo: '',
+    correo: '',
+    telefono: '',
   });
 
   // Cargar datos del empleado si estamos editando
@@ -18,6 +21,9 @@ function EmployeeForm({ employee, onSubmit, onCancel }) {
         pais: employee.pais || '',
         cargo: employee.cargo || '',
         anios: employee.anios,
+        sueldo: employee.sueldo || '',
+        correo: employee.correo || '',
+        telefono: employee.telefono || '',
       });
     } else {
       resetForm();
@@ -31,6 +37,9 @@ function EmployeeForm({ employee, onSubmit, onCancel }) {
       pais: '',
       cargo: '',
       anios: '',
+      sueldo: '',
+      correo: '',
+      telefono: '',
     });
   };
 
@@ -51,11 +60,12 @@ function EmployeeForm({ employee, onSubmit, onCancel }) {
       return;
     }
 
-    // Convertir edad y años a números
+    // Convertir edad y años a números, y sueldo a float
     const employeeData = {
       ...formData,
       edad: parseInt(formData.edad),
       anios: parseInt(formData.anios),
+      sueldo: formData.sueldo ? parseFloat(formData.sueldo) : null,
     };
 
     onSubmit(employeeData);
@@ -139,6 +149,44 @@ function EmployeeForm({ employee, onSubmit, onCancel }) {
           min="0"
           max="50"
           required
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="sueldo">Sueldo</label>
+        <input
+          type="number"
+          id="sueldo"
+          name="sueldo"
+          value={formData.sueldo}
+          onChange={handleChange}
+          placeholder="Ingresa el sueldo"
+          min="0"
+          step="0.01"
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="correo">Correo</label>
+        <input
+          type="email"
+          id="correo"
+          name="correo"
+          value={formData.correo}
+          onChange={handleChange}
+          placeholder="Ingresa el correo electrónico"
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="telefono">Teléfono</label>
+        <input
+          type="tel"
+          id="telefono"
+          name="telefono"
+          value={formData.telefono}
+          onChange={handleChange}
+          placeholder="Ingresa el teléfono"
         />
       </div>
 

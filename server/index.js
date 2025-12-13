@@ -47,7 +47,7 @@ app.get('/employees/:id', (req, res) => {
 
 // POST - Crear un nuevo empleado
 app.post('/employees', (req, res) => {
-    const { nombre, edad, pais, cargo, anios } = req.body;
+    const { nombre, edad, pais, cargo, anios, sueldo, correo, telefono } = req.body;
 
     // Validación básica
     if (!nombre || !edad || !anios) {
@@ -56,9 +56,9 @@ app.post('/employees', (req, res) => {
         });
     }
 
-    const sql = "INSERT INTO employees (nombre, edad, pais, cargo, anios) VALUES (?, ?, ?, ?, ?)";
+    const sql = "INSERT INTO employees (nombre, edad, pais, cargo, anios, sueldo, correo, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-    db.query(sql, [nombre, edad, pais, cargo, anios], (err, result) => {
+    db.query(sql, [nombre, edad, pais, cargo, anios, sueldo, correo, telefono], (err, result) => {
         if (err) {
             return res.status(500).json({
                 error: 'Error al crear el empleado'
@@ -74,7 +74,7 @@ app.post('/employees', (req, res) => {
 // PUT - Actualizar un empleado existente
 app.put('/employees/:id', (req, res) => {
     const { id } = req.params;
-    const { nombre, edad, pais, cargo, anios } = req.body;
+    const { nombre, edad, pais, cargo, anios, sueldo, correo, telefono } = req.body;
 
     // Validación básica
     if (!nombre || !edad || !anios) {
@@ -83,9 +83,9 @@ app.put('/employees/:id', (req, res) => {
         });
     }
 
-    const sql = "UPDATE employees SET nombre = ?, edad = ?, pais = ?, cargo = ?, anios = ? WHERE id = ?";
+    const sql = "UPDATE employees SET nombre = ?, edad = ?, pais = ?, cargo = ?, anios = ?, sueldo = ?, correo = ?, telefono = ? WHERE id = ?";
 
-    db.query(sql, [nombre, edad, pais, cargo, anios, id], (err, result) => {
+    db.query(sql, [nombre, edad, pais, cargo, anios, sueldo, correo, telefono, id], (err, result) => {
         if (err) {
             return res.status(500).json({
                 error: 'Error al actualizar el empleado'

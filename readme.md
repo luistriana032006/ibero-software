@@ -116,9 +116,9 @@ El frontend estará disponible en `http://localhost:5173`
 
 **Luis Miguel Triana Rueda**
 
-**SENA**
+**Corporación Universitaria Iberoamericana**
 
-**Materia:** tecnologo en desarollo de software
+**Materia:** Métodos de Construcción de Software
 
 ---
 
